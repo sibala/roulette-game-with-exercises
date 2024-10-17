@@ -15,20 +15,20 @@
 
     <div id="status">
       <form>
-        <label for="">Bankroll: </label>
+        <label for="bankroll">Bankroll: </label>
         <input id="bankroll" name="bankroll" type="number" value="100">
 
-        <label for="">Bet: </label>
+        <label for="bet">Bet: </label>
         <input id="bet" name="bet" type="number" value="10">
 
-        <label for="">Color: </label>
+        <label for="color">Color: </label>
         <select name="color" id="color">
           <option value="green">Green</option>
           <option value="red">Red</option>
           <option value="black">Black</option>
         </select>
 
-        <input id="rollBtn" type="submit" value="Roll">
+        <input id="rollBtn" type="submit" value="Roll" onclick="rollGame(event)">
       </form>
     </div>
     
