@@ -16,7 +16,6 @@ const bankroll      = document.getElementById('bankroll'),
 const table     = ['green','red','black','red','black','red','black','red','black','red','black','black','red','black','red','black','red','black','red','red','black','red','black','red','black','red','black','red','black','black','red','black','red','black','red','black','red'];
 
 function rollGame(event) {
-  console.log(event);
   // Prevents all default behavior of the element that the event is attached to
   event.preventDefault();
 
@@ -27,17 +26,20 @@ function rollGame(event) {
   // 1. Skapa korrekt logik för att bestämma om spelaren vann eller ej
   // - Jämför den valda färgen från rulllistan selectedColor.value med numberColor. Om de är lika, Då har spelaren vunnit, annars har han förlorat
 
-  console.log(selectedColor.value);
-
-  // 2. Justera bankroll och vissa korrekt meddelande i log, beroende om Spelaren Vann eller inte
+  // Determine who is the winner
+  let logMessage = `Bet is ${bet.value} spinning the wheel...Stopped at ${numberColor}.`
+  if (selectedColor.value === numberColor) {
+    bankroll.value = parseInt(bankroll.value) + parseInt(bet.value);
+    logMessage += " You won!";
+  } else {
+    bankroll.value = parseInt(bankroll.value) - parseInt(bet.value);
+    logMessage += " You lost!";
+  }
+  log.innerHTML = "<p>" + logMessage + "</p>" + log.innerHTML;
+  
+  // 2. Justera bankroll och visa korrekt meddelande i log, beroende om Spelaren Vann eller inte
   // - Om spelaren vann, ge meddelandet via log, i en av if/else-blocket
   // - Om spelade förlorade, ge ett annat meddelande via log, i den andra if/else-blocket
-
-  console.log(`Number: ${randomNumber}, color: ${numberColor}`)
-
-  console.log('You just rolled :)')
-  const logMessage = `<p>Bet is ??? spinning the wheel...Stopped at ?????. You won/lost</p>`
-  log.innerHTML = logMessage + log.innerHTML;
 }
 
 
