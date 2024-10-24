@@ -14,8 +14,35 @@
 
 
     <!-- THis HTML should be generated though JS, see exercise 5 -->
-    <!-- <div id="table">
-      <div class="number green" id="n0">0</div>
+    
+
+    <div id="status">
+      <form>
+        <label for="bankroll">Bankroll: </label>
+        <input id="bankroll" name="bankroll" type="text" value="100">
+
+        <label for="bet">Bet: </label>
+        <input id="bet" name="bet" type="text" value="10">
+
+        <label for="color">Color: </label>
+        <select name="color" id="color">
+          <option value="green">Green</option>
+          <option value="red">Red</option>
+          <option value="black">Black</option>
+        </select>
+
+        <input id="rollBtn" type="submit" value="Roll" onclick="rollGame(event)">
+        
+        <div id="form-messages"></div>
+      </form>
+    </div>
+    
+    <div id="log">
+      <p>Welcome to my Roulette table</p>
+    </div>
+
+    <div id="table">
+      <!-- <div class="number green" id="n0">0</div>
       <div class="number red" id="n1">1</div>
       <div class="number black" id="n2">2</div>
       <div class="number red" id="n3">3</div>
@@ -51,33 +78,8 @@
       <div class="number black" id="n33">33</div>
       <div class="number red" id="n34">34</div>
       <div class="number black" id="n35">35</div>
-      <div class="number red" id="n36">36</div>
-    </div> -->
-
-    <div id="status">
-      <form>
-        <label for="bankroll">Bankroll: </label>
-        <input id="bankroll" name="bankroll" type="text" value="100">
-
-        <label for="bet">Bet: </label>
-        <input id="bet" name="bet" type="text" value="10">
-
-        <label for="color">Color: </label>
-        <select name="color" id="color">
-          <option value="green">Green</option>
-          <option value="red">Red</option>
-          <option value="black">Black</option>
-        </select>
-
-        <input id="rollBtn" type="submit" value="Roll" onclick="rollGame(event)">
-        
-        <div id="form-messages"></div>
-      </form>
-    </div>
-    
-    <div id="log">
-      <p>Welcome to my Roulette table</p>
-    </div>
+      <div class="number red" id="n36">36</div>-->
+    </div> 
 
   </div>
   

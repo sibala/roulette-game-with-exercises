@@ -6,7 +6,7 @@ const bankroll      = document.getElementById('bankroll'),
 
 /**
  * Array - a list of multiple values
- */
+*/
 // The index for retrievning the elements in the array are 0-36, as following
 // table[0] = 'green'
 // table[1] = 'red'
@@ -20,36 +20,15 @@ function rollGame(event) {
   event.preventDefault();
   document.getElementById('form-messages').innerHTML = "";
 
-  /**
-   * Validation
-   */
-  let errorMessages = "";
-  if (isNaN(bankroll.value) || isNaN(bet.value)) {
-    errorMessages = "Both bankroll and bet must be numeric";
-  }
-  
-  if (parseInt(bet.value) > parseInt(bankroll.value)) {
-    errorMessages = "Hold your horses PAL. You can't bet what you don't have";
-  }
-
-
-  if (parseInt(bet.value) < 0 || parseInt(bankroll.value) < 0) {
-    errorMessages = "Both bankroll and bet must be a positive number for you to play";
-  }
-
+  let errorMessages = validateForm();
   if (errorMessages) {
     document.getElementById('form-messages').innerHTML = `<p>${errorMessages}</p>`;
     return;
   }
 
-  // Rondom number between 0-36
-  const randomNumber = Math.floor(Math.random() * 37) + 0;
-  const numberColor  = table[randomNumber];
-
-  // 1. Skapa korrekt logik för att bestämma om spelaren vann eller ej
-  // - Jämför den valda färgen från rulllistan selectedColor.value med numberColor. Om de är lika, Då har spelaren vunnit, annars har han förlorat
 
   // Determine who is the winner
+  const numberColor  = getTableColor();
   let logMessage = `Bet is ${bet.value} spinning the wheel...Stopped at ${numberColor}.`
   if (selectedColor.value === numberColor) {
     bankroll.value = parseInt(bankroll.value) + parseInt(bet.value);
@@ -59,20 +38,43 @@ function rollGame(event) {
     logMessage += " You lost!";
   }
   log.innerHTML = "<p>" + logMessage + "</p>" + log.innerHTML;
+}
+
+
+function validateForm() {
+  if (isNaN(bankroll.value) || isNaN(bet.value)) {
+    return "Both bankroll and bet must be numeric";
+  }
   
-  // 2. Justera bankroll och visa korrekt meddelande i log, beroende om Spelaren Vann eller inte
-  // - Om spelaren vann, ge meddelandet via log, i en av if/else-blocket
-  // - Om spelade förlorade, ge ett annat meddelande via log, i den andra if/else-blocket
+  if (parseInt(bet.value) > parseInt(bankroll.value)) {
+    return "Hold your horses PAL. You can't bet what you don't have";
+  }
+
+  if (parseInt(bet.value) < 0 || parseInt(bankroll.value) < 0) {
+    return "Both bankroll and bet must be a positive number for you to play";
+  }
+
+  return "";
 }
 
-
-let tableNumbersHTML = "";
-for (let i = 0; i <= 36; i++) {
-  tableNumbersHTML += `<div class="number ${table[i]}" id="n${i}">${i}</div>`
+function randomNumberBetween(min, max) {
+  return Math.floor(Math.random() * max + 1) + min;
 }
-console.log(tableNumbersHTML);
-document.getElementById('container').innerHTML += `<div id="table">${tableNumbersHTML}</div>`
 
+function getTableColor() {
+  return table[randomNumberBetween(0, 36)]
+}
+
+function createRouletteTable() {
+  let tableNumbersHTML = "";
+  for (let i = 0; i <= 36; i++) {
+    tableNumbersHTML += `<div class="number ${table[i]}" id="n${i}">${i}</div>`
+  }
+  // console.log(tableNumbersHTML);
+  document.getElementById('table').innerHTML += tableNumbersHTML
+}
+
+createRouletteTable();
 
 /**
  * Exercises
