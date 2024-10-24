@@ -66,6 +66,14 @@ function rollGame(event) {
 }
 
 
+let tableNumbersHTML = "";
+for (let i = 0; i <= 36; i++) {
+  tableNumbersHTML += `<div class="number ${table[i]}" id="n${i}">${i}</div>`
+}
+console.log(tableNumbersHTML);
+document.getElementById('container').innerHTML += `<div id="table">${tableNumbersHTML}</div>`
+
+
 /**
  * Exercises
  */
