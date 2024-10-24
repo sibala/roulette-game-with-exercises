@@ -57,10 +57,10 @@
     <div id="status">
       <form>
         <label for="bankroll">Bankroll: </label>
-        <input id="bankroll" name="bankroll" type="number" value="100">
+        <input id="bankroll" name="bankroll" type="text" value="100">
 
         <label for="bet">Bet: </label>
-        <input id="bet" name="bet" type="number" value="10">
+        <input id="bet" name="bet" type="text" value="10">
 
         <label for="color">Color: </label>
         <select name="color" id="color">
@@ -70,6 +70,8 @@
         </select>
 
         <input id="rollBtn" type="submit" value="Roll" onclick="rollGame(event)">
+        
+        <div id="form-messages"></div>
       </form>
     </div>
     
