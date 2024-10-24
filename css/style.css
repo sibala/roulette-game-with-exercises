@@ -217,3 +217,7 @@ input[type=number] {
 #form-messages {
   color: red;
 }
+
+#footer { 
+  background-color: skyblue; position: absolute; bottom: 0
+}
