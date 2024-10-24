@@ -18,6 +18,29 @@ const table     = ['green','red','black','red','black','red','black','red','blac
 function rollGame(event) {
   // Prevents all default behavior of the element that the event is attached to
   event.preventDefault();
+  document.getElementById('form-messages').innerHTML = "";
+
+  /**
+   * Validation
+   */
+  let errorMessages = "";
+  if (isNaN(bankroll.value) || isNaN(bet.value)) {
+    errorMessages = "Both bankroll and bet must be numeric";
+  }
+  
+  if (parseInt(bet.value) > parseInt(bankroll.value)) {
+    errorMessages = "Hold your horses PAL. You can't bet what you don't have";
+  }
+
+
+  if (parseInt(bet.value) < 0 || parseInt(bankroll.value) < 0) {
+    errorMessages = "Both bankroll and bet must be a positive number for you to play";
+  }
+
+  if (errorMessages) {
+    document.getElementById('form-messages').innerHTML = `<p>${errorMessages}</p>`;
+    return;
+  }
 
   // Rondom number between 0-36
   const randomNumber = Math.floor(Math.random() * 37) + 0;
