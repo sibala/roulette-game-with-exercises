@@ -9,7 +9,7 @@ const bankroll = document.getElementById("bankroll"),
 
 /**
  * Array - a list of multiple values
- */
+*/
 // The index for retrievning the elements in the array are 0-36, as following
 // table[0] = 'green'
 // table[1] = 'red'
@@ -71,6 +71,7 @@ function rollGame(event) {
   console.log(event);
   // Prevents all default behavior of the element that the event is attached to
   event.preventDefault();
+  document.getElementById('form-messages').innerHTML = "";
 
   /***
    * Validering för bankroll och bet.
